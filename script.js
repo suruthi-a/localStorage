@@ -60,7 +60,6 @@ function showData(){
 
 document.onload = showData();
 
-
 function AddData(){
     if (validateForm() == true)
     {
@@ -70,6 +69,7 @@ function AddData(){
         var email = document.getElementById("email").value;
 
         var peopleList;
+        
         if(localStorage.getItem("peopleList") == null)
         {
             peopleList = [];
