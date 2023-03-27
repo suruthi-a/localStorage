@@ -1,8 +1,8 @@
-function validateForm(){
-    var name = document.getElementById("name").value;
-    var age = document.getElementById("age").value;
-    var address = document.getElementById("address").value;
-    var email = document.getElementById("email").value;
+const validateForm = () => {
+    var name = $("#name").val();
+    var age = $("#age").val();
+    var address = $("#address").val();
+    var email = $("#email").val();
 
     if(name == ""){
         alert("Name is required");
@@ -32,6 +32,8 @@ function validateForm(){
     return true;
 }
 
+    
+
 function showData(){
     var peopleList;
     if(localStorage.getItem("peopleList") == null){
@@ -60,13 +62,14 @@ function showData(){
 
 document.onload = showData();
 
+/////////////////////////
 function AddData(){
     if (validateForm() == true)
     {
-        var name = document.getElementById("name").value;
-        var age = document.getElementById("age").value;
-        var address = document.getElementById("address").value;
-        var email = document.getElementById("email").value;
+        var name = $("#name").val();
+        var age = $("#age").val();
+        var address = $("#address").val();
+        var email =  $("#email").val();
 
         var peopleList;
         
@@ -86,10 +89,10 @@ function AddData(){
 
         localStorage.setItem("peopleList",JSON.stringify(peopleList));
         showData();
-        document.getElementById("name").value="";
-        document.getElementById("age").value="";
-        document.getElementById("address").value="";
-        document.getElementById("email").value="";
+        $("#name").val("");
+        $("#age").val("");
+        $("#address").val("");
+        $("#email").val("");
     }
 }
 
@@ -107,10 +110,10 @@ function deleteData(index)
         showData();
 }
 
-
+////////////////////////
 function updateData(index){
-    document.getElementById("Submit").style.display = "none";
-    document.getElementById("Update").style.display = "block";
+    $("#Submit").hide();
+    $("#Update").show();
 
     var peopleList;
     if(localStorage.getItem("peopleList") == null){
@@ -119,29 +122,29 @@ function updateData(index){
             peopleList = JSON.parse(localStorage.getItem("peopleList"));
     }
 
-    document.getElementById("name").value = peopleList[index].name;
-    document.getElementById("age").value = peopleList[index].age;
-    document.getElementById("address").value = peopleList[index].address;
-    document.getElementById("email").value = peopleList[index].email;
+    $("#name").val(peopleList[index].name) ;
+    $("#age").val(peopleList[index].age) ;
+    $("#address").val(peopleList[index].address)  ;
+    $("#email").val(peopleList[index].email) ;
 
     document.querySelector("#Update").onclick = function() {
         if (validateForm() == true) {
-            peopleList[index].name = document.getElementById("name").value;
-            peopleList[index].age = document.getElementById("age").value;
-            peopleList[index].address = document.getElementById("address").value;
-            peopleList[index].email = document.getElementById("email").value;
+            peopleList[index].name = $("#name").val();
+            peopleList[index].age = $("#age").val() ;
+            peopleList[index].address = $("#address").val()  ;
+            peopleList[index].email = $("#email").val() ;
 
             localStorage.setItem("peopleList", JSON.stringify(peopleList));
 
             showData();
 
-            document.getElementById("name").value = "";
-            document.getElementById("age").value = "";
-            document.getElementById("address").value = "";
-            document.getElementById("email").value = "";
+            $("#name").val("");
+            $("#age").val("") ;
+            $("#address").val("") ;
+            $("#email").val("") ;
 
-            document.getElementById("Submit").style.display = "block";
-            document.getElementById("Update").style.display = "none";
+            $("#Submit").show();
+            $("#Update").hide();
         }
     }
 };
