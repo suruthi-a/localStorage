@@ -30,9 +30,8 @@ const validateForm = () => {
        return false;
     }
     return true;
-}
+};
 
-    
 
 function showData(){
     var peopleList;
@@ -62,7 +61,7 @@ function showData(){
 
 document.onload = showData();
 
-/////////////////////////
+
 function AddData(){
     if (validateForm() == true)
     {
@@ -94,7 +93,7 @@ function AddData(){
         $("#address").val("");
         $("#email").val("");
     }
-}
+};
 
 
 function deleteData(index)
@@ -108,9 +107,9 @@ function deleteData(index)
         peopleList.splice(index,1);
         localStorage.setItem("peopleList",JSON.stringify(peopleList));
         showData();
-}
+};
 
-////////////////////////
+
 function updateData(index){
     $("#Submit").hide();
     $("#Update").show();
